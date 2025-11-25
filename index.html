@@ -30,9 +30,18 @@
                 <section class="jm_juego_section">
                     <h2 class="jm_subtitulo">Elige tu jugada</h2>
                     <div class="jm_opciones">
-                        <button class="jm_opcion" data-opcion="piedra">✊ Piedra</button>
-                        <button class="jm_opcion" data-opcion="papel">✋ Papel</button>
-                        <button class="jm_opcion" data-opcion="tijera">✌️ Tijera</button>
+                        <button class="jm_opcion" data-opcion="piedra">
+                            <span class="jm_opcion_icono">✊</span>
+                            <span class="jm_opcion_texto">Piedra</span>
+                        </button>
+                        <button class="jm_opcion" data-opcion="papel">
+                            <span class="jm_opcion_icono">✋</span>
+                            <span class="jm_opcion_texto">Papel</span>
+                        </button>
+                        <button class="jm_opcion" data-opcion="tijera">
+                            <span class="jm_opcion_icono">✌️</span>
+                            <span class="jm_opcion_texto">Tijera</span>
+                        </button>
                     </div>
                     <div class="jm_resultado_section">
                         <p id="jm_mensaje_resultado" class="jm_mensaje_resultado">Elige una opción para comenzar</p>
@@ -97,33 +106,33 @@
                     </div>
 
                     <div class="jm_controles">
-                        <button id="jm_reiniciar" class="jm_boton jm_boton_secundario">🔄 Reiniciar</button>
-                        <button id="jm_exportar" class="jm_boton jm_boton_secundario">📊 Exportar</button>
+                        <button id="jm_reiniciar" class="jm_boton jm_boton_secundario">
+                            <span>🔄</span>
+                            <span>Reiniciar Estadísticas</span>
+                        </button>
+                        <button id="jm_exportar" class="jm_boton jm_boton_secundario">
+                            <span>📊</span>
+                            <span>Exportar Datos</span>
+                        </button>
                     </div>
                 </section>
 
                 <!-- Historial -->
                 <section class="jm_historial_section">
                     <h2 class="jm_subtitulo">Historial Reciente</h2>
-                    <div id="jm_historial_partidas" class="jm_lista_historial"></div>
+                    <div id="jm_historial_partidas" class="jm_lista_historial">
+                        <div class="jm_partida_item jm_empate">
+                            <span class="jm_partida_hora">--:--:--</span>
+                            <span class="jm_partida_icono">─</span>
+                            <span class="jm_partida_vs">VS</span>
+                            <span class="jm_partida_icono">─</span>
+                            <span class="jm_partida_resultado">SIN DATOS</span>
+                        </div>
+                    </div>
                 </section>
             </div>
 
             <aside class="jm_sidebar">
-                <!-- Ranking -->
-                <section class="jm_ranking_section">
-                    <h2 class="jm_subtitulo">🏆 Ranking</h2>
-                    <div id="jm_ranking_lista" class="jm_ranking_lista">
-                        <div class="jm_ranking_item">
-                            <div class="jm_ranking_posicion">1</div>
-                            <div class="jm_ranking_info">
-                                <div class="jm_ranking_nombre">Jugador Ejemplo</div>
-                                <div class="jm_ranking_puntos">75% victorias</div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
                 <!-- Instrucciones -->
                 <section class="jm_instrucciones_section">
                     <h2 class="jm_subtitulo">📋 Cómo Jugar</h2>
@@ -157,6 +166,27 @@
                         </ul>
                     </div>
                 </section>
+
+                <!-- Información GitHub -->
+                <section class="jm_ranking_section">
+                    <h2 class="jm_subtitulo">🚀 GitHub Pages</h2>
+                    <div class="jm_ranking_lista">
+                        <div class="jm_ranking_item">
+                            <div class="jm_ranking_posicion" style="background: var(--jm-info-color);">ℹ️</div>
+                            <div class="jm_ranking_info">
+                                <div class="jm_ranking_nombre">Versión Estática</div>
+                                <div class="jm_ranking_puntos">Solo HTML/CSS/JS</div>
+                            </div>
+                        </div>
+                        <div class="jm_ranking_item">
+                            <div class="jm_ranking_posicion" style="background: var(--jm-success-color);">✅</div>
+                            <div class="jm_ranking_info">
+                                <div class="jm_ranking_nombre">Funcionalidades</div>
+                                <div class="jm_ranking_puntos">Juego + Estadísticas</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </aside>
         </div>
     </main>
@@ -175,6 +205,291 @@
         </div>
     </footer>
 
-    <script src="jm_script_github.js"></script>
+    <script>
+        // JavaScript simplificado para GitHub Pages
+        console.log('🎮 Inicializando juego para GitHub Pages...');
+
+        class PiedraPapelTijera {
+            constructor() {
+                this.stats = this.cargarEstadisticas();
+                this.historial = this.cargarHistorial();
+                this.inicializar();
+            }
+
+            cargarEstadisticas() {
+                const guardado = localStorage.getItem('jm_stats');
+                return guardado ? JSON.parse(guardado) : {
+                    victorias: 0,
+                    derrotas: 0,
+                    empates: 0,
+                    racha_actual: 0,
+                    mejor_racha: 0,
+                    total_partidas: 0
+                };
+            }
+
+            cargarHistorial() {
+                const guardado = localStorage.getItem('jm_historial');
+                return guardado ? JSON.parse(guardado) : [];
+            }
+
+            guardarEstadisticas() {
+                localStorage.setItem('jm_stats', JSON.stringify(this.stats));
+            }
+
+            guardarHistorial() {
+                if (this.historial.length > 10) {
+                    this.historial = this.historial.slice(0, 10);
+                }
+                localStorage.setItem('jm_historial', JSON.stringify(this.historial));
+            }
+
+            inicializar() {
+                this.inicializarTema();
+                this.inicializarEventos();
+                this.actualizarInterfaz();
+                console.log('✅ Juego listo!');
+            }
+
+            inicializarTema() {
+                const tema = localStorage.getItem('jm_theme') || 'light';
+                document.documentElement.setAttribute('data-theme', tema);
+                this.actualizarToggleTema();
+            }
+
+            inicializarEventos() {
+                // Botones de juego
+                document.querySelectorAll('.jm_opcion').forEach(boton => {
+                    boton.addEventListener('click', (e) => {
+                        const opcion = e.currentTarget.dataset.opcion;
+                        console.log('🎮 Jugando:', opcion);
+                        this.jugar(opcion);
+                    });
+                });
+
+                // Toggle tema
+                document.querySelector('.jm_theme_toggle').addEventListener('click', () => {
+                    this.cambiarTema();
+                });
+
+                // Reiniciar estadísticas
+                document.getElementById('jm_reiniciar').addEventListener('click', () => {
+                    this.reiniciarEstadisticas();
+                });
+
+                // Exportar datos
+                document.getElementById('jm_exportar').addEventListener('click', () => {
+                    this.exportarDatos();
+                });
+            }
+
+            jugar(eleccionUsuario) {
+                const opciones = ['piedra', 'papel', 'tijera'];
+                const eleccionComputadora = opciones[Math.floor(Math.random() * 3)];
+                
+                let resultado = '';
+                if (eleccionUsuario === eleccionComputadora) {
+                    resultado = 'empate';
+                } else if (
+                    (eleccionUsuario === 'piedra' && eleccionComputadora === 'tijera') ||
+                    (eleccionUsuario === 'papel' && eleccionComputadora === 'piedra') ||
+                    (eleccionUsuario === 'tijera' && eleccionComputadora === 'papel')
+                ) {
+                    resultado = 'ganaste';
+                } else {
+                    resultado = 'perdiste';
+                }
+
+                this.actualizarEstadisticas(resultado);
+                this.agregarAlHistorial(eleccionUsuario, eleccionComputadora, resultado);
+                this.mostrarResultado(eleccionUsuario, eleccionComputadora, resultado);
+                this.actualizarInterfaz();
+            }
+
+            actualizarEstadisticas(resultado) {
+                this.stats.total_partidas++;
+                
+                switch(resultado) {
+                    case 'ganaste':
+                        this.stats.victorias++;
+                        this.stats.racha_actual++;
+                        if (this.stats.racha_actual > this.stats.mejor_racha) {
+                            this.stats.mejor_racha = this.stats.racha_actual;
+                        }
+                        break;
+                    case 'perdiste':
+                        this.stats.derrotas++;
+                        this.stats.racha_actual = 0;
+                        break;
+                    case 'empate':
+                        this.stats.empates++;
+                        break;
+                }
+                
+                this.guardarEstadisticas();
+            }
+
+            agregarAlHistorial(usuario, computadora, resultado) {
+                const partida = {
+                    fecha: new Date().toLocaleTimeString(),
+                    usuario: usuario,
+                    computadora: computadora,
+                    resultado: resultado,
+                    icono_usuario: this.obtenerIcono(usuario),
+                    icono_computadora: this.obtenerIcono(computadora)
+                };
+                
+                this.historial.unshift(partida);
+                this.guardarHistorial();
+            }
+
+            obtenerIcono(jugada) {
+                const iconos = {
+                    'piedra': '✊',
+                    'papel': '✋',
+                    'tijera': '✌️'
+                };
+                return iconos[jugada];
+            }
+
+            mostrarResultado(usuario, computadora, resultado) {
+                const mensajeElement = document.getElementById('jm_mensaje_resultado');
+                const iconoUsuario = this.obtenerIcono(usuario);
+                const iconoComputadora = this.obtenerIcono(computadora);
+                
+                let mensaje = '';
+                let clase = '';
+                
+                switch(resultado) {
+                    case 'ganaste':
+                        mensaje = `¡GANASTE! ${iconoUsuario} vence a ${iconoComputadora}`;
+                        clase = 'jm_ganador';
+                        break;
+                    case 'perdiste':
+                        mensaje = `Perdiste... ${iconoComputadora} vence a ${iconoUsuario}`;
+                        clase = 'jm_perdedor';
+                        break;
+                    case 'empate':
+                        mensaje = `¡EMPATE! ${iconoUsuario} vs ${iconoComputadora}`;
+                        clase = 'jm_empate_resultado';
+                        break;
+                }
+                
+                mensajeElement.textContent = mensaje;
+                mensajeElement.className = 'jm_mensaje_resultado jm_animacion_resultado ' + clase;
+            }
+
+            actualizarInterfaz() {
+                // Actualizar contadores
+                document.getElementById('jm_contador_victorias').textContent = this.stats.victorias;
+                document.getElementById('jm_contador_derrotas').textContent = this.stats.derrotas;
+                document.getElementById('jm_contador_empates').textContent = this.stats.empates;
+                document.getElementById('jm_total_partidas').textContent = this.stats.total_partidas;
+                document.getElementById('jm_racha_actual').textContent = this.stats.racha_actual;
+                document.getElementById('jm_mejor_racha').textContent = this.stats.mejor_racha;
+                
+                // Calcular porcentajes
+                const total = this.stats.total_partidas || 1;
+                const porcentajeVictorias = ((this.stats.victorias / total) * 100).toFixed(1);
+                const porcentajeDerrotas = ((this.stats.derrotas / total) * 100).toFixed(1);
+                const porcentajeEmpates = ((this.stats.empates / total) * 100).toFixed(1);
+                
+                document.getElementById('jm_porcentaje_victorias').textContent = porcentajeVictorias + '%';
+                document.getElementById('jm_porcentaje_derrotas').textContent = porcentajeDerrotas + '%';
+                document.getElementById('jm_porcentaje_empates').textContent = porcentajeEmpates + '%';
+                
+                // Actualizar barras
+                document.getElementById('jm_barra_victorias').style.width = porcentajeVictorias + '%';
+                document.getElementById('jm_barra_derrotas').style.width = porcentajeDerrotas + '%';
+                document.getElementById('jm_barra_empates').style.width = porcentajeEmpates + '%';
+                
+                // Actualizar historial
+                this.actualizarHistorial();
+            }
+
+            actualizarHistorial() {
+                const contenedor = document.getElementById('jm_historial_partidas');
+                
+                if (this.historial.length === 0) {
+                    contenedor.innerHTML = '<div class="jm_partida_item jm_empate"><span>No hay partidas jugadas</span></div>';
+                    return;
+                }
+                
+                contenedor.innerHTML = this.historial.map(partida => `
+                    <div class="jm_partida_item jm_${partida.resultado}">
+                        <span class="jm_partida_hora">${partida.fecha}</span>
+                        <span class="jm_partida_icono">${partida.icono_usuario}</span>
+                        <span class="jm_partida_vs">VS</span>
+                        <span class="jm_partida_icono">${partida.icono_computadora}</span>
+                        <span class="jm_partida_resultado">${partida.resultado.toUpperCase()}</span>
+                    </div>
+                `).join('');
+            }
+
+            cambiarTema() {
+                const temaActual = document.documentElement.getAttribute('data-theme');
+                const nuevoTema = temaActual === 'light' ? 'dark' : 'light';
+                
+                document.documentElement.setAttribute('data-theme', nuevoTema);
+                localStorage.setItem('jm_theme', nuevoTema);
+                this.actualizarToggleTema();
+            }
+
+            actualizarToggleTema() {
+                const toggle = document.querySelector('.jm_theme_toggle');
+                const icon = toggle.querySelector('.jm_theme_icon');
+                const tema = document.documentElement.getAttribute('data-theme');
+                
+                if (tema === 'dark') {
+                    icon.textContent = '☀️';
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    icon.textContent = '🌙';
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            }
+
+            reiniciarEstadisticas() {
+                if (confirm('¿Estás seguro de que quieres reiniciar todas las estadísticas?')) {
+                    this.stats = {
+                        victorias: 0,
+                        derrotas: 0,
+                        empates: 0,
+                        racha_actual: 0,
+                        mejor_racha: 0,
+                        total_partidas: 0
+                    };
+                    this.historial = [];
+                    this.guardarEstadisticas();
+                    this.guardarHistorial();
+                    this.actualizarInterfaz();
+                    document.getElementById('jm_mensaje_resultado').textContent = 'Estadísticas reiniciadas';
+                }
+            }
+
+            exportarDatos() {
+                const datos = {
+                    estadisticas: this.stats,
+                    historial: this.historial,
+                    fecha_exportacion: new Date().toLocaleString()
+                };
+                
+                const blob = new Blob([JSON.stringify(datos, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `estadisticas_piedra_papel_tijera_${Date.now()}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+        }
+
+        // Inicializar el juego cuando se cargue la página
+        document.addEventListener('DOMContentLoaded', () => {
+            window.juego = new PiedraPapelTijera();
+        });
+    </script>
 </body>
 </html>
