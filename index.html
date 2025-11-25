@@ -1,25 +1,21 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Piedra, Papel o Tijera - JM</title>
     <link rel="stylesheet" href="jm_estilos.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="jm_body">
-    <!-- Header -->
     <header class="jm_header">
         <div class="jm_container">
             <nav class="jm_nav">
-                <div class="jm_brand">
-                    <div class="jm_logo">🎮</div>
+                <a href="#" class="jm_brand">
+                    <div class="jm_logo">JM</div>
                     <h1 class="jm_titulo">Piedra, Papel o Tijera</h1>
-                </div>
+                </a>
                 <div class="jm_nav_controls">
-                    <button class="jm_theme_toggle" aria-label="Cambiar tema">
+                    <button class="jm_theme_toggle">
                         <span class="jm_theme_icon">🌙</span>
                     </button>
                 </div>
@@ -27,43 +23,25 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="jm_container">
         <div class="jm_main_layout">
-            
-            <!-- Columna Principal -->
             <div class="jm_main_content">
-                
                 <!-- Sección de Juego -->
-                <section class="jm_juego_section" aria-labelledby="titulo-juego">
-                    <h2 class="jm_subtitulo" id="titulo-juego">Elige tu jugada</h2>
-                    
+                <section class="jm_juego_section">
+                    <h2 class="jm_subtitulo">Elige tu jugada</h2>
                     <div class="jm_opciones">
-                        <button class="jm_opcion" data-opcion="piedra" aria-label="Seleccionar piedra">
-                            <span class="jm_opcion_icono">✊</span>
-                            <span class="jm_opcion_texto">Piedra</span>
-                        </button>
-                        <button class="jm_opcion" data-opcion="papel" aria-label="Seleccionar papel">
-                            <span class="jm_opcion_icono">✋</span>
-                            <span class="jm_opcion_texto">Papel</span>
-                        </button>
-                        <button class="jm_opcion" data-opcion="tijera" aria-label="Seleccionar tijera">
-                            <span class="jm_opcion_icono">✌️</span>
-                            <span class="jm_opcion_texto">Tijera</span>
-                        </button>
+                        <button class="jm_opcion" data-opcion="piedra">✊ Piedra</button>
+                        <button class="jm_opcion" data-opcion="papel">✋ Papel</button>
+                        <button class="jm_opcion" data-opcion="tijera">✌️ Tijera</button>
                     </div>
-                    
                     <div class="jm_resultado_section">
-                        <p id="jm_mensaje_resultado" class="jm_mensaje_resultado">
-                            ¡Elige una opción para comenzar!
-                        </p>
+                        <p id="jm_mensaje_resultado" class="jm_mensaje_resultado">Elige una opción para comenzar</p>
                     </div>
                 </section>
 
                 <!-- Sección de Estadísticas -->
-                <section class="jm_estadisticas_section" aria-labelledby="titulo-estadisticas">
-                    <h2 class="jm_subtitulo" id="titulo-estadisticas">Estadísticas</h2>
-                    
+                <section class="jm_estadisticas_section">
+                    <h2 class="jm_subtitulo">Estadísticas</h2>
                     <div class="jm_contadores_grid">
                         <div class="jm_contador_item jm_victorias">
                             <span class="jm_contador_numero" id="jm_contador_victorias">0</span>
@@ -79,23 +57,22 @@
                         </div>
                     </div>
 
-                    <!-- Barras de Progreso -->
                     <div class="jm_barras_progreso">
-                        <div class="jm_barra_item jm_barra_victorias">
+                        <div class="jm_barra_item">
                             <span class="jm_barra_etiqueta">Victorias</span>
                             <div class="jm_barra_contenedor">
                                 <div class="jm_barra_progreso jm_barra_victorias" id="jm_barra_victorias"></div>
                             </div>
                             <span class="jm_barra_porcentaje" id="jm_porcentaje_victorias">0%</span>
                         </div>
-                        <div class="jm_barra_item jm_barra_derrotas">
+                        <div class="jm_barra_item">
                             <span class="jm_barra_etiqueta">Derrotas</span>
                             <div class="jm_barra_contenedor">
                                 <div class="jm_barra_progreso jm_barra_derrotas" id="jm_barra_derrotas"></div>
                             </div>
                             <span class="jm_barra_porcentaje" id="jm_porcentaje_derrotas">0%</span>
                         </div>
-                        <div class="jm_barra_item jm_barra_empates">
+                        <div class="jm_barra_item">
                             <span class="jm_barra_etiqueta">Empates</span>
                             <div class="jm_barra_contenedor">
                                 <div class="jm_barra_progreso jm_barra_empates" id="jm_barra_empates"></div>
@@ -104,7 +81,6 @@
                         </div>
                     </div>
 
-                    <!-- Rachas -->
                     <div class="jm_rachas_grid">
                         <div class="jm_racha_item">
                             <span class="jm_racha_valor" id="jm_racha_actual">0</span>
@@ -120,124 +96,37 @@
                         </div>
                     </div>
 
-                    <!-- Controles -->
                     <div class="jm_controles">
-                        <button id="jm_reiniciar" class="jm_boton jm_boton_secundario" aria-label="Reiniciar estadísticas">
-                            <span>🔄</span>
-                            <span>Reiniciar Estadísticas</span>
-                        </button>
-                        <button id="jm_exportar" class="jm_boton jm_boton_secundario" aria-label="Exportar datos">
-                            <span>📊</span>
-                            <span>Exportar Datos</span>
-                        </button>
+                        <button id="jm_reiniciar" class="jm_boton jm_boton_secundario">🔄 Reiniciar</button>
+                        <button id="jm_exportar" class="jm_boton jm_boton_secundario">📊 Exportar</button>
                     </div>
                 </section>
 
-                <!-- Sección de Historial -->
-                <section class="jm_historial_section" aria-labelledby="titulo-historial">
-                    <h2 class="jm_subtitulo" id="titulo-historial">Historial Reciente</h2>
-                    <div id="jm_historial_partidas" class="jm_lista_historial">
-                        <!-- El historial se cargará aquí dinámicamente -->
-                        <div class="jm_partida_item jm_empate">
-                            <span class="jm_partida_hora">--:--:--</span>
-                            <span class="jm_partida_icono">🎮</span>
-                            <span class="jm_partida_vs">VS</span>
-                            <span class="jm_partida_icono">🤖</span>
-                            <span class="jm_partida_resultado">¡COMIENZA A JUGAR!</span>
-                        </div>
-                    </div>
+                <!-- Historial -->
+                <section class="jm_historial_section">
+                    <h2 class="jm_subtitulo">Historial Reciente</h2>
+                    <div id="jm_historial_partidas" class="jm_lista_historial"></div>
                 </section>
             </div>
 
-            <!-- Sidebar -->
             <aside class="jm_sidebar">
-                
-                <!-- Sección de Ranking -->
-                <section class="jm_ranking_section" aria-labelledby="titulo-ranking">
-                    <h2 class="jm_subtitulo" id="titulo-ranking">🏆 Ranking Top 5</h2>
+                <!-- Ranking -->
+                <section class="jm_ranking_section">
+                    <h2 class="jm_subtitulo">🏆 Ranking</h2>
                     <div id="jm_ranking_lista" class="jm_ranking_lista">
                         <div class="jm_ranking_item">
                             <div class="jm_ranking_posicion">1</div>
                             <div class="jm_ranking_info">
-                                <div class="jm_ranking_nombre">ProPlayer123</div>
-                                <div class="jm_ranking_puntos">87% victorias</div>
-                            </div>
-                        </div>
-                        <div class="jm_ranking_item">
-                            <div class="jm_ranking_posicion">2</div>
-                            <div class="jm_ranking_info">
-                                <div class="jm_ranking_nombre">TijerasMaster</div>
-                                <div class="jm_ranking_puntos">82% victorias</div>
-                            </div>
-                        </div>
-                        <div class="jm_ranking_item">
-                            <div class="jm_ranking_posicion">3</div>
-                            <div class="jm_ranking_info">
-                                <div class="jm_ranking_nombre">PiedraPro</div>
-                                <div class="jm_ranking_puntos">79% victorias</div>
-                            </div>
-                        </div>
-                        <div class="jm_ranking_item">
-                            <div class="jm_ranking_posicion">4</div>
-                            <div class="jm_ranking_info">
-                                <div class="jm_ranking_nombre">PapelGamer</div>
+                                <div class="jm_ranking_nombre">Jugador Ejemplo</div>
                                 <div class="jm_ranking_puntos">75% victorias</div>
                             </div>
                         </div>
-                        <div class="jm_ranking_item">
-                            <div class="jm_ranking_posicion">5</div>
-                            <div class="jm_ranking_info">
-                                <div class="jm_ranking_nombre">NuevoJugador</div>
-                                <div class="jm_ranking_puntos">68% victorias</div>
-                            </div>
-                        </div>
                     </div>
                 </section>
 
-                <!-- Sección de Autenticación -->
-                <section class="jm_auth_section" aria-labelledby="titulo-auth">
-                    <h2 class="jm_subtitulo" id="titulo-auth">🔐 Iniciar Sesión</h2>
-                    <form id="jm_login_form" class="jm_auth_form">
-                        <div class="jm_form_group">
-                            <label for="jm_login_usuario" class="jm_form_label">Usuario:</label>
-                            <input type="text" class="jm_form_input" id="jm_login_usuario" placeholder="Tu usuario" required aria-required="true">
-                        </div>
-                        <div class="jm_form_group">
-                            <label for="jm_login_password" class="jm_form_label">Contraseña:</label>
-                            <input type="password" class="jm_form_input" id="jm_login_password" placeholder="Tu contraseña" required aria-required="true">
-                        </div>
-                        <button type="submit" class="jm_boton">
-                            <span>🎮</span>
-                            <span>Iniciar Sesión</span>
-                        </button>
-                    </form>
-                    <div class="jm_mt_sm jm_text_center">
-                        <small class="jm_text_muted">¿No tienes cuenta? <a href="#" id="jm_toggle_registro" class="jm_link">Regístrate aquí</a></small>
-                    </div>
-
-                    <form id="jm_register_form" class="jm_auth_form jm_hidden">
-                        <div class="jm_form_group">
-                            <label for="jm_register_usuario" class="jm_form_label">Usuario:</label>
-                            <input type="text" class="jm_form_input" id="jm_register_usuario" placeholder="Elige un usuario" required aria-required="true">
-                        </div>
-                        <div class="jm_form_group">
-                            <label for="jm_register_email" class="jm_form_label">Email:</label>
-                            <input type="email" class="jm_form_input" id="jm_register_email" placeholder="tu@email.com" required aria-required="true">
-                        </div>
-                        <div class="jm_form_group">
-                            <label for="jm_register_password" class="jm_form_label">Contraseña:</label>
-                            <input type="password" class="jm_form_input" id="jm_register_password" placeholder="Mínimo 6 caracteres" required aria-required="true">
-                        </div>
-                        <button type="submit" class="jm_boton">
-                            <span>📝</span>
-                            <span>Registrarse</span>
-                        </button>
-                    </form>
-                </section>
-
-                <!-- Sección de Instrucciones -->
-                <section class="jm_instrucciones_section" aria-labelledby="titulo-instrucciones">
-                    <h2 class="jm_subtitulo" id="titulo-instrucciones">📋 Cómo Jugar</h2>
+                <!-- Instrucciones -->
+                <section class="jm_instrucciones_section">
+                    <h2 class="jm_subtitulo">📋 Cómo Jugar</h2>
                     <div class="jm_instrucciones_lista">
                         <div class="jm_instruccion_item">
                             <div class="jm_instruccion_numero">1</div>
@@ -268,41 +157,24 @@
                         </ul>
                     </div>
                 </section>
-
-                <!-- Sección de Información del Juego -->
-                <section class="jm_info_section" aria-labelledby="titulo-info">
-                    <h2 class="jm_subtitulo" id="titulo-info">ℹ️ Información</h2>
-                    <div class="jm_info_content">
-                        <div class="jm_info_item">
-                            <strong>Desarrollador:</strong> JM
-                        </div>
-                        <div class="jm_info_item">
-                            <strong>Proyecto:</strong> PLP3 - Parcial
-                        </div>
-                        <div class="jm_info_item">
-                            <strong>Tecnologías:</strong> HTML5, CSS3, JavaScript, PHP
-                        </div>
-                    </div>
-                </section>
             </aside>
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="jm_footer">
         <div class="jm_container">
             <div class="jm_footer_content">
                 <div class="jm_brand">
-                    <div class="jm_logo">🎮</div>
-                    <p class="jm_footer_text">Piedra, Papel o Tijera - Proyecto PLP3</p>
+                    <div class="jm_logo">JM</div>
+                    <p class="jm_footer_text">Piedra, Papel o Tijera - GitHub Pages</p>
                 </div>
                 <div class="jm_footer_credits">
-                    <span class="jm_footer_text">Desarrollado con ❤️ por JM</span>
+                    <span class="jm_footer_text">Desarrollado con ❤️</span>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="jm_script.js"></script>
+    <script src="jm_script_github.js"></script>
 </body>
 </html>
